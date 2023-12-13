@@ -13,20 +13,27 @@ export default function HeaderHomeTemplate() {
         <button type="button" className="btn btn-success">
           Login
         </button>
-        <button type="button" className="ms-2 btn btn-light">Sign Up</button>
+        <button type="button" className="ms-2 btn btn-light">
+          Sign Up
+        </button>
       </>
     );
   };
 
   return (
     <div>
-      <nav className="navbar navbar-expand-lg bg-dark navbar-dark ">
+      <nav
+        className="navbar navbar-expand-lg navbar-dark"
+        style={{
+          backgroundColor: "#2d2636d6",
+        }}
+      >
         <div className="container-fluid">
           <NavLink to={"home"} className="navbar-brand">
             <img
-              src="https://i.pinimg.com/originals/54/51/75/54517514b7e9c8c21cb1526176c30732.jpg"
+              src="./img/icon.png"
               alt=""
-              style={{ width: 50, height: "auto" }}
+              style={{ width: 60, height: "auto" }}
             />
           </NavLink>
           <button
