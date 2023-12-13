@@ -1,6 +1,19 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { getThongTinHeThongRapApi } from "../../../Redux/reducers/quanLyHeThongRapReducer";
 
 export default function FooterHomeTemplate() {
+  const dispatch = useDispatch();
+  const { thongTinHeThongRap } = useSelector(
+    (state) => state.quanLyHeThongRapReducer
+  );
+
+  // console.log(thongTinHeThongRap);
+
+  useEffect(() => {
+    dispatch(getThongTinHeThongRapApi());
+  }, []);
+
   return (
     <div>
       <div className="w-full">
@@ -9,7 +22,7 @@ export default function FooterHomeTemplate() {
           style={{ backgroundColor: "#2d2636d6" }}
         >
           <div className="container p-4 pb-0">
-            <section className>
+            <section>
               <div className="row">
                 <div className="col-md-2 col-lg-2 col-xl-2 mt-3">
                   <img src="./img/icon.png" alt="" width={150} />
@@ -64,54 +77,20 @@ export default function FooterHomeTemplate() {
                   <h6 className="text-uppercase mb-4 font-weight-bold">
                     Hệ Thống rạp
                   </h6>
-                  <a
-                    className="btn btn-primary btn-floating m-1"
-                    style={{ backgroundColor: "#3b5998" }}
-                    href="#!"
-                    role="button"
-                  >
-                    <i className="fab fa-facebook-f" />
-                  </a>
-                  <a
-                    className="btn btn-primary btn-floating m-1"
-                    style={{ backgroundColor: "#55acee" }}
-                    href="#!"
-                    role="button"
-                  >
-                    <i className="fab fa-twitter" />
-                  </a>
-                  <a
-                    className="btn btn-primary btn-floating m-1"
-                    style={{ backgroundColor: "#dd4b39" }}
-                    href="#!"
-                    role="button"
-                  >
-                    <i className="fab fa-google" />
-                  </a>
-                  <a
-                    className="btn btn-primary btn-floating m-1"
-                    style={{ backgroundColor: "#ac2bac" }}
-                    href="#!"
-                    role="button"
-                  >
-                    <i className="fab fa-instagram" />
-                  </a>
-                  <a
-                    className="btn btn-primary btn-floating m-1"
-                    style={{ backgroundColor: "#0082ca" }}
-                    href="#!"
-                    role="button"
-                  >
-                    <i className="fab fa-linkedin-in" />
-                  </a>
-                  <a
-                    className="btn btn-primary btn-floating m-1"
-                    style={{ backgroundColor: "#333333" }}
-                    href="#!"
-                    role="button"
-                  >
-                    <i className="fab fa-github" />
-                  </a>
+
+                  {thongTinHeThongRap?.map((item, index) => {
+                    return (
+                      <a
+                        key={index}
+                        className="btn btn-primary btn-floating m-1"
+                        style={{ backgroundColor: "#3b5998" }}
+                        href="#!"
+                        role="button"
+                      >
+                        <img src={item.logo} alt="" width={25} />
+                      </a>
+                    );
+                  })}
                 </div>
               </div>
             </section>
